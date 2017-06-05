@@ -1341,19 +1341,6 @@ uint8_t Adafruit_PN532::ntag2xx_WritePage (uint8_t page, uint8_t * data)
   // NTAG 215       135     4             129
   // NTAG 216       231     4             225
 
-  if ((page < 4) || (page > 225))
-  {
-    #ifdef MIFAREDEBUG
-      PN532DEBUGPRINT.println(F("Page value out of range"));
-    #endif
-    // Return Failed Signal
-    return 0;
-  }
-
-  #ifdef MIFAREDEBUG
-    PN532DEBUGPRINT.print(F("Trying to write 4 byte page"));PN532DEBUGPRINT.println(page);
-  #endif
-
   /* Prepare the first command */
   pn532_packetbuffer[0] = PN532_COMMAND_INDATAEXCHANGE;
   pn532_packetbuffer[1] = 1;                              /* Card number */
